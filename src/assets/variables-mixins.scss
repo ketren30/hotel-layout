@@ -1,0 +1,81 @@
+$gold: #C6AF66;
+$black: #18191B;
+$black2: #27282A;
+$platinum: #E9EAEC;
+$grey: #424343;
+$light-grey: #F7F7F8;
+$dark-text: #63636F;
+$ver-203 :#ACADA5;
+$radio: #DADADA;
+
+
+
+@mixin width($w) {
+    width: #{calc($w / 16)}rem;
+}
+@mixin width-height($w, $h) {
+    width: $w;
+    height: $h;
+}
+@mixin w-h($w, $h) {
+    width: #{calc($w / 16)}rem;
+    height: #{calc($h / 16)}rem;
+}
+@mixin margin-t($v) {
+    margin-top: #{calc($v / 16)}rem;
+}
+@mixin margin-b($v) {
+    margin-bottom: #{calc($v / 16)}rem;
+}
+@mixin margin-r($v) {
+    margin-right: #{calc($v / 16)}rem;
+}
+@mixin margin-l($v) {
+    margin-left: #{calc($v / 16)}rem;
+}
+@mixin margin($t, $r, $b, $l) {
+    margin: #{calc($t / 16)}rem #{calc($r / 16)}rem #{calc($b / 16)}rem #{calc($l / 16)}rem;
+}
+@mixin margin-c($up, $side) {
+    margin: #{calc($up / 16)}rem #{calc($side / 16)}rem
+}
+@mixin margin-all($v) {
+    margin: #{calc($v / 16)}rem
+}
+@mixin font-size($px) {
+    font-size: #{calc($px / 16)}rem;
+}
+@mixin margin-x($left, $rigth) {
+    margin: 0 #{calc($right / 16)}rem 0 #{calc($left / 16)}rem
+}
+@mixin margin-y($top, $bottom) {
+    margin: #{calc($top / 16)}rem 0 #{calc($bottom / 16)}rem 0
+}
+@mixin height($v) {
+    height: #{calc($v / 3.6)}vw;
+}
+%flex-space-between {
+    display: flex;
+    justify-content: space-between;
+}
+
+@mixin next-template() {
+    width: 40.8%;
+    font-size: 15px;
+    height: 14.4vw;
+    line-height: 100%;
+    border-radius: 4px;
+    padding: 0 17.7vw 0 7.2vw;
+    margin-right: 0;
+    padding-right: 34px;
+    display: flex;
+    align-items: center;
+}
+@mixin next-template-after() {
+    height: 6.66vw;
+    width: 6vw;
+    z-index: 2;
+    top: 3.8vw;
+    left: calc(100% - 10vw);
+}
+
