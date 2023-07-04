@@ -61,7 +61,7 @@ import goldButton from './UI/goldButton.vue';
         top: 0;
         left: 0;
         position: fixed;
-        z-index: 1;
+        z-index: 2;
         
         .popup-wrapper {
             @include w-h(842, 328);
@@ -71,7 +71,7 @@ import goldButton from './UI/goldButton.vue';
             position: absolute;
             top: 10rem;
             left: 27rem;
-            z-index: 300;
+            z-index: 3;
             display: flex;
             align-items: start;
 
@@ -156,5 +156,60 @@ import goldButton from './UI/goldButton.vue';
         }
     }
     
-    
+    @media (max-width: 600px) {
+        .overley {
+
+            .popup-wrapper {
+                @include width-height(95%, 100vw);
+                flex-direction: column;
+                top: 20vw;
+                left: 2.5%;
+                border-radius: 4.44vw;
+
+                .column {
+                    @include width-height(100%, 45vw);
+
+                    .fourth-header {
+                        font-size: 8.88vw;
+                    }
+                    .grey-font {
+                        font-size: 4.44vw;
+                    }
+                    .bottom {
+                        font-size: 3.33vw;
+                        width: fit-content;
+                    }
+                }
+
+                .form-wrapper {
+                    @include width-height(100%, 63vw);
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+
+                    .labels {
+                        font-size: 3.33vw;
+                        width: 100%;
+                        margin-left: 10vw;
+                    }
+                    .inputs {
+                        @include width-height(83.88vw,12vw);
+                        border-radius: 1vw;
+                        padding: 2vw 0 0 4.44vw;
+                        margin-bottom: 4vw;
+                    }
+                    .inputs::placeholder {
+                        font-size: 3.88vw;
+                    }
+                }
+
+                .cross {
+                    position: absolute;
+                    top: 2vw;
+                    left: 82vw;
+                    @include width-height(6.66vw, 6.66vw);
+                }
+            }
+        }
+    }
 </style>

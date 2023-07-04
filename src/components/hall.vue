@@ -1,5 +1,6 @@
 <template>
     <form class="tab-content">
+        <Popup v-if="isPopup" @close="closePopup" :width="width"></Popup>
         <img src="../images/seats-plan.png" alt="Plan of seats" class="plan">
 
         <article class="description">
@@ -16,7 +17,6 @@
             <div class="buttons">
                 <GoldButton name="Забронировать" :onClick="openPopup" height="52" ></GoldButton>
                 <WhiteButton name="Посмотреть галерею"></WhiteButton>
-                <Popup v-if="isPopup" @close="closePopup" :width="width"></Popup>
             </div>
         </article>
 

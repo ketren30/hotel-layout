@@ -146,7 +146,7 @@ export default {
 
         .moving-text {
           position: absolute;
-          z-index: 2;
+          z-index: 1;
           font-family: Lato;
           @include w-h(476, 64);
           @include font-size(24);

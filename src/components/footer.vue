@@ -81,6 +81,8 @@ export default {
                 padding: 11.11vw 0 0 10vw;
                 align-items: start;
                 justify-content: start;
+                margin-top: 10vw;
+                border-radius: 5.55vw 5.55vw 0 0;
 
                 .logo-and-copyright {
                     @include width-height(30vw, 15.5vw);
