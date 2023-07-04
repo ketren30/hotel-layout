@@ -54,7 +54,7 @@ $radio: #DADADA;
 @mixin height($v) {
     height: #{calc($v / 3.6)}vw;
 }
-%flex-space-between {
+%price-wrapper {
     display: flex;
     justify-content: space-between;
 }

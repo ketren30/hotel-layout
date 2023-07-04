@@ -1,15 +1,15 @@
 <template>
     <footer class="footer-wrapper">
         <div class="logo-and-copyright">
-            <img alt="footer-logo" src="../images/footer-logo.png" class="footer-logo">
+            <a  href='' class="footer-logo"></a>
             <p v-if="width>=600" class="copyright">© Hotel Stavropol, 2020</p>
         </div>
         <div class="socials">
             <p>Мы в соц. сетях</p>
             <div class="inline-logos">
-                <img alt="facebook logo" src="../images/footer-facebook.png" class="social-logo">
-                <img alt="telegram logo" src="../images/footer-telegram.png" class="social-logo">
-                <img alt="Vkontakte logo" src="../images/footer-vk.png" class="social-logo">
+                <a href="" class="facebook-logo"></a>
+                <a href="" class="telegram-logo"></a>
+                <a href="" class="vk-logo"></a>
             </div>
         </div>
         <p v-if="width<600" class="copyright">© Hotel Stavropol, 2020</p>
@@ -48,8 +48,11 @@ export default {
             @include font-size(14);
 
             .footer-logo {
+                display: block;
                 @include w-h(109, 56);
                 @include margin-b(61);
+                background-image: url('../images/footer-logo.png');
+                background-size: cover;
             }
         }
 
@@ -62,10 +65,25 @@ export default {
             .inline-logos {
                 @include w-h(216, 52);
                 @include margin-t(16);
+                display: flex;
 
-                .social-logo {
+                a {
+                    display: block;
                     @include w-h(52, 52);
-                    @include margin-r(20);
+                    margin-right: 1.25rem;
+                    background-size: cover;
+                }
+                a:nth-child(3){ 
+                    margin: 0;
+                }
+                .facebook-logo {
+                    background-image: url('../images/footer-facebook.png')
+                }
+                .vk-logo {
+                    background-image: url('../images/footer-vk.png')
+                }
+                .telegram-logo {
+                    background-image: url('../images/footer-telegram.png')
                 }
             }
             
@@ -102,11 +120,11 @@ export default {
                         @include width-height(54.44vw, 14.44vw);
                         margin: 4.44vw 0 0 0;
 
-                        .social-logo {
+                        a {
                             @include width-height(14.44vw, 14.44vw);
                             margin-right: 5.55vw;
                         }
-                        .social-logo:nth-child(3) {
+                        a:nth-child(3){ 
                             margin: 0;
                         }
                     }

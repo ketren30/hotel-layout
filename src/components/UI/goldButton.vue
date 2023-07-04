@@ -1,5 +1,5 @@
 <template>
-    <input class="gold-button" @click="onClick" type="button" :value="name" :style="styleObj">
+    <button class="gold-button" @click="onClick" type="button">{{ name }}</button>
 </template>
 
 <script>

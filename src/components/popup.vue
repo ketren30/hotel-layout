@@ -2,22 +2,19 @@
     <div class="overley" @click="closeWindow">
         <dialog open class="popup-wrapper" @click.stop>
             <div class="column">
-                <h4 class="fourth-header">Оставьте заявку</h4>
-                <p class="grey-font">Скоро с вами свяжется администратор</p>
-                <p class="bottom">Нажимая на кнопку «Отправить», Вы соглашаетесь с <a href="">Политикой конфиденциальности</a></p>
+                <h4 class="popup-title">Оставьте заявку</h4>
+                <p class="popup-info">Скоро с вами свяжется администратор</p>
+                <p class="popup-info-bottom">Нажимая на кнопку «Отправить», Вы соглашаетесь с <a href="">Политикой конфиденциальности</a></p>
             </div>
             <form v-if="!isClicked" class="form-wrapper">
                 <label class="labels">Ваше имя</label>
-                <br>
                 <input placeholder="Иван" class="inputs">
-                <br>
                 <label class="labels">Ваш номер телефона</label>
-                <br>
                 <input placeholder="+7 (___) ___-__-__" class="inputs">
                 <goldButton name="Забронировать" :onClick="onBookingButton"></goldButton>
             </form>
             <h4 v-if="isClicked" class="ready">Всё готово! Ожидайте звонка.</h4>
-            <img alt="cross" src="../images/close.png" @click="closeWindow" class="cross">
+            <button @click="closeWindow" class="close"></button>
         </dialog>
     </div>
     
@@ -91,17 +88,17 @@ import goldButton from './UI/goldButton.vue';
                 @include w-h(400, 217);
                 @include margin(40, 20, 0, 40);
 
-                .fourth-header {
+                .popup-title {
                     @extend %gold;
                     @include margin-b(8);
                 }
-                .grey-font {
+                .popup-info {
                     color: $ver-203;
                     @include font-size(16);
                     font-family: Lato;
                     @include margin-b(119);
                 }
-                .bottom {
+                .popup-info-bottom {
                     @include w-h(320, 30);
                     font-family: Roboto;
                     @include font-size(12);
@@ -124,7 +121,7 @@ import goldButton from './UI/goldButton.vue';
                     @include font-size(12px);
                     line-height: 1rem;
                     color: $ver-203;
-                    @include margin-b(8);
+                    @include margin-b(40);
                 }
                 .inputs {
                     @include w-h(302, 52);
@@ -149,9 +146,11 @@ import goldButton from './UI/goldButton.vue';
                         color: $black2;
                     }
             }
-            .cross {
+            .close {
                 @include w-h(24, 24);
-                @include margin(16, 16, 0, 40);
+                @include margin(14, 9, 0, 40);
+                background-image: url('../images/close.png');
+                background-size: cover;
             }
         }
     }
@@ -167,15 +166,17 @@ import goldButton from './UI/goldButton.vue';
                 border-radius: 4.44vw;
 
                 .column {
-                    @include width-height(100%, 45vw);
+                    @include width-height(90%, 45vw);
+                    margin-left: 5vw;
 
-                    .fourth-header {
+                    .popup-title {
                         font-size: 8.88vw;
                     }
-                    .grey-font {
+                    .popup-info {
                         font-size: 4.44vw;
+                        margin-bottom: 6vw;
                     }
-                    .bottom {
+                    .popup-info-bottom {
                         font-size: 3.33vw;
                         width: fit-content;
                     }
@@ -203,11 +204,11 @@ import goldButton from './UI/goldButton.vue';
                     }
                 }
 
-                .cross {
+                .close {
                     position: absolute;
-                    top: 2vw;
-                    left: 82vw;
-                    @include width-height(6.66vw, 6.66vw);
+                    top: 1.5vw;
+                    left: 81vw;
+                    @include width-height(6vw, 6vw);
                 }
             }
         }

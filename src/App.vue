@@ -2,24 +2,25 @@
     <Header :width="width"></Header>
     <main>
       <section class="price">
-        <h2 class="second-header">Рассчитайте стоимость вашего банкета</h2>
-        <div class="flex-space-between">
-          <h3 class="moving-text">Ответьте на 5 вопросов и получите горку из шампанского в подарок</h3>
+        <h2 class="second-title">Рассчитайте стоимость вашего банкета</h2>
+        <div class="price-wrapper">
+          <h3 class="quiz-title">Ответьте на 5 вопросов и получите горку из шампанского в подарок</h3>
           <Quiz v-if="width>=600 || isquizStarted" 
             :question="questions[currentIndex]" 
             :index="currentIndex" 
             @incr="increase" 
             @decr="decrease"
+            @setIndexZero="setIndexZero"
           ></Quiz>
-          <article v-if="!isquizStarted || width>=600" class="сhampagne">
+          <article v-if="!isquizStarted || width>=600" class="promotion">
             <NextButton v-if="width<600" name="Начать" :onClick="setQuizStart"></NextButton>
-            <img class="absolute" alt="Bottle of сhampagne" src="./images/bottle.png">
+            <img class="promotion-image" alt="Bottle of promotion" src="./images/bottle.png">
           </article>
         </div>
       </section>
 
       <section class="schemes">
-        <h2 class="second-header">Схемы залов</h2>
+        <h2 class="second-title">Схемы залов</h2>
         <div class="tabs-wrapper">
           <div class="tabs">
             <button :class="isFirstHall?'tab-active':'tab-inactive'" @click="setFirstHall">Зал Первый</button>
@@ -37,7 +38,7 @@
 import Header from './components/header.vue';
 import Quiz from './components/quiz.vue';
 import Hall from './components/hall.vue';
-import NextButton from './components/UI/nextButton.vue';
+import NextButton from './components/ui/nextButton.vue';
 import Footer from './components/footer.vue';
 const elem=document.getElementById('html');
 
@@ -97,6 +98,11 @@ export default {
     },
     setQuizStart() {
       this.isquizStarted=true;
+    },
+    setIndexZero() {
+      setTimeout(()=> {
+        this.currentIndex=0
+      }, 3000)
     }
   },
   created() {
@@ -125,7 +131,7 @@ export default {
       flex-grow: 1;
     }
 
-    .second-header {
+    .second-title {
       @include w-h(784, 48);
       line-height: 100%;
       font-family: P052;
@@ -138,13 +144,13 @@ export default {
       @include w-h(1588, 430);
       @include margin-b(32);
 
-      .flex-space-between {
-        @extend %flex-space-between;
+      .price-wrapper {
+        @extend %price-wrapper;
         @include w-h(1588, 430);
         font-family: Lato;
         position: relative;
 
-        .moving-text {
+        .quiz-title {
           position: absolute;
           z-index: 1;
           font-family: Lato;
@@ -156,7 +162,7 @@ export default {
         }
 
       
-        .сhampagne {
+        .promotion {
           @include w-h(650, 369);
           background-image: url('./images/bottle-back.png');
           background-size: cover;
@@ -164,7 +170,7 @@ export default {
           position: relative;
           color: white;
 
-          .absolute {
+          .promotion-image {
             @include w-h(292, 399);
             position: absolute;
             z-index: 1;
@@ -218,7 +224,7 @@ export default {
   @media (max-width: 600px) {
     #app {
 
-    .second-header {
+    .second-title {
       font-size: 20px;
       width: 91%;
       height: fit-content;
@@ -232,11 +238,11 @@ export default {
       width: 100%;
       @include height(404);
 
-      .flex-space-between {
+      .price-wrapper {
         width: 100%;
         height: fit-content;
 
-        .moving-text {
+        .quiz-title {
             width: 91%;
             height: fit-content;
             top: 0;
@@ -246,14 +252,14 @@ export default {
             line-height: 20px;
           }
 
-        .сhampagne {
+        .promotion {
           width: 100%;
           overflow: visible;
           @include height(280);
           margin-top: 60px;
           padding: 53vw 0 0 4.4%;
 
-          .absolute {
+          .promotion-image {
             width: 59.7%;
             top: -15px;
             left: 40.2%;
@@ -273,7 +279,7 @@ export default {
       @include height(720);
       @extend %flex-align-center;
 
-      .second-header {
+      .second-title {
         font-size: 5.55vw;
         line-height: 7.77vw;
         width: fit-content;
@@ -321,7 +327,7 @@ export default {
               box-shadow: 0px 2.22vw 4.44vw 0px #2223241A;
               background-color: white;
 
-              .third-header {
+              .description-title {
                 font-size: 5.55vw;
                 line-height: 7.7vw;
                 width: 82.2vw;

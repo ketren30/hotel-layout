@@ -4,7 +4,7 @@
         <img src="../images/seats-plan.png" alt="Plan of seats" class="plan">
 
         <article class="description">
-            <h3 class="third-header">{{ hall.description }}</h3>
+            <h3 class="description-title">{{ hall.description }}</h3>
             <div class="info">
                 <p class="criterias">площадь</p>
                 <p class="values">{{ hall.square }}</p>
@@ -81,7 +81,7 @@ const body=document.getElementById('body');
             justify-content: start;
             color: white;
 
-            .third-header {
+            .description-title {
                 @include w-h(456, 64);
                 font-family: P052;
                 @include font-size(32);
@@ -118,10 +118,5 @@ const body=document.getElementById('body');
                 border-radius: 4.44vw;
             }
         }
-    }
-
-    @media (max-width: 600px) {
-        
-        
     }
 </style>

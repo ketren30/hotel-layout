@@ -1,12 +1,11 @@
 <template>
     <header v-if="width>=600" class="head-wrapper">
         <section class="logo-and-info">
-            <img class="logo" alt="Hotel Stavropol" src='../images/header_logo.png'>
+            <a  href='' class="logo"></a>
             <address class="info">
-                <img src="../images/Map_Pin.png" alt="map-pin" class="pin">
-                <p class="addres">г. Ставрополь <br>ул. Пушкина 272</p>
-                <img class="messenger-icon" alt="telegram icon" src="../images/telegram.png">
-                <img class="messenger-icon" alt="whatsapp icon" src="../images/whatsapp.png">
+                <p class="address">г. Ставрополь <br>ул. Пушкина 272</p>
+                <a href='' class="telegram-icon"></a>
+                <a href='' class="whatsapp-icon"></a>
                 <div class="call">
                     <a href="tel: +7123456789">+7 (123) 45-67-89</a>
                     <p>Перезвоните мне</p>
@@ -25,10 +24,11 @@
             <a class="menu-item">Контакты</a>
         </nav>
     </header> 
+    
     <header v-if="width<600" class="mobile-header">
         <div class="img-wrapper">
-            <img alt="Open Menu" src="../images/menu.png" class="menu">
-            <img alt="Site logo" src="../images/header_logo.png" class="mobile-logo">
+            <button type="button" class="menu"></button>
+            <a  href='' class="mobile-logo"></a>
         </div>
         <GoldButton name="Позвонить" height="36"></GoldButton>
     </header>   
@@ -65,11 +65,13 @@ import GoldButton from '../components/UI/goldButton.vue'
 
     .logo-and-info {
         @include width(1567);
-        @extend %flex-space-between;
+        @extend %price-wrapper;
         @include margin(12, 0, 32, 0);
 
         .logo {
         @include w-h(108.62, 56);
+        background-image: url(../images/header_logo.png);
+        background-size: cover;
         }
         .info {
             @include font-size(20);
@@ -78,18 +80,33 @@ import GoldButton from '../components/UI/goldButton.vue'
             align-items: center;
             font-style: normal;
 
-            .pin {
-                @include width(24);
-                @include margin-r(20);
-            }
-            .addres {
+            
+            .address {
                 @include width(200);
                 @include margin-r(48);
+                position: relative;
+            }
+            .address::before {
+                content:'';
+                @include w-h(24, 24);
+                background-image: url('../images/Map_Pin.png');
+                background-size: cover;
+                position: absolute;
+                top: 1.3rem;
+                left: -2.5rem;
             }
             
-            .messenger-icon {
-                @include width(48);
+            .telegram-icon, .whatsapp-icon {
+                display: block;
+                @include w-h(48, 48);
                 @include margin-r(8);
+                background-size: cover;
+            }
+            .telegram-icon {
+                background-image: url('../images/telegram.png');
+            }
+            .whatsapp-icon {
+                background-image: url('../images/whatsapp.png');
             }
             .call {
                 @include width(174);
@@ -139,17 +156,24 @@ import GoldButton from '../components/UI/goldButton.vue'
     color: white;
 
     .img-wrapper {
-        width: 32%;
+        width: 33.88vw;
         display: flex;
         justify-content: space-between;
-        
+        align-items: center;
+
         .menu {
-            width: 15.5%;
-            object-fit: contain;
+            width: 6.66vw;
+            @include height(24);
+            background-image: url('../images/menu.png');
+            background-size: cover;
+            margin-right: 5.27vw;
         }
         .mobile-logo {
-            width: 68.6%;
-            object-fit: contain;
+            display: block;
+            width: 21vw;
+            @include height(40);
+            background-image: url('../images/header_logo.png');
+            background-size: cover;
         }
     }
 }

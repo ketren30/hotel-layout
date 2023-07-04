@@ -27,7 +27,7 @@
         <div class="buttons">
             <button v-if="index>0 & index<5" @click="decrease" class="prev">Назад</button>
             <NextButton v-if="index<4" :onClick="increase" name='Следующий вопрос'></NextButton>
-            <button v-if="index==4" @click="increase" class="submit">Отправить</button>
+            <button v-if="index==4" @click="submit" class="submit">Отправить</button>
         </div>
     </section>   
 
@@ -50,7 +50,10 @@ export default {
         },
         increase: function() {
             this.$emit('incr')
-            console.log(this.index)
+        },
+        submit: function() {
+            this.$emit('incr')
+            this.$emit('setIndexZero')
         }
 
     }
