@@ -23,7 +23,7 @@
                 
             </div>
         </div>
-        <div class="splitter" v-if="index>5"> </div>
+        <div class="splitter" v-if="index<5"> </div>
         <div class="buttons">
             <button v-if="index>0 & index<5" @click="decrease" class="prev">Назад</button>
             <NextButton v-if="index<4" :onClick="increase" name='Следующий вопрос'></NextButton>

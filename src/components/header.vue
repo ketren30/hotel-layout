@@ -92,8 +92,8 @@ import GoldButton from '../components/UI/goldButton.vue'
                 @include margin-r(8);
             }
             .call {
-                @include width(164);
-                @include margin-l(40);
+                @include width(174);
+                @include margin-l(30);
                 p {
                     @include font-size(15);
                     color: $gold;
