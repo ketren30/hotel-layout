@@ -6,10 +6,16 @@
         </div>
         <div class="socials">
             <p>Мы в соц. сетях</p>
-            <div class="inline-logos">
-                <a href="" class="facebook-logo"></a>
-                <a href="" class="telegram-logo"></a>
-                <a href="" class="vk-logo"></a>
+            <div class="inline-icons">
+                <a href='' class="footer-icon">
+                    <img src="../images/fb.svg">
+                </a>
+                <a href='' class="footer-icon">
+                    <img src="../images/wa.svg">
+                </a>
+                <a href='' class="footer-icon">
+                    <img src="../images/vk.svg">
+                </a>
             </div>
         </div>
         <p v-if="width<600" class="copyright">© Hotel Stavropol, 2020</p>
@@ -34,7 +40,7 @@ export default {
     .footer-wrapper {
         flex: 0 0 auto;
         width: 100%;
-        height: 13.31rem;
+        height: 11vw;
         background-color: $grey;
         border-radius: 1.25rem 1.25rem 0 0;
         display: flex;
@@ -43,7 +49,7 @@ export default {
         color: white;
 
         .logo-and-copyright {
-            @include w-h(151, 137);
+            @include w-h(200, 137);
             @include margin(64, 0, 0, 66);
             @include font-size(14);
 
@@ -54,6 +60,10 @@ export default {
                 background-image: url('../images/footer-logo.png');
                 background-size: cover;
             }
+            .copyright {
+                width: fit-content;
+                word-wrap: none;
+            }
         }
 
         .socials {
@@ -62,28 +72,23 @@ export default {
             @include font-size(20);
             font-family: Lato;
 
-            .inline-logos {
+            .inline-icons {
                 @include w-h(216, 52);
                 @include margin-t(16);
                 display: flex;
 
-                a {
-                    display: block;
-                    @include w-h(52, 52);
-                    margin-right: 1.25rem;
-                    background-size: cover;
-                }
-                a:nth-child(3){ 
-                    margin: 0;
-                }
-                .facebook-logo {
-                    background-image: url('../images/footer-facebook.png')
-                }
-                .vk-logo {
-                    background-image: url('../images/footer-vk.png')
-                }
-                .telegram-logo {
-                    background-image: url('../images/footer-telegram.png')
+                .footer-icon {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    @include w-h(48, 48);
+                    @include margin-r(20);
+                    background-color: $ver-203;
+                    border-radius: 0.8vw;
+
+                    img {
+                        @include w-h(24,24);
+                    }
                 }
             }
             
@@ -116,16 +121,17 @@ export default {
                     font-family: Lato;
                     margin: 0 0 16.66vw 0;
 
-                    .inline-logos {
+                    .inline-icons {
                         @include width-height(54.44vw, 14.44vw);
                         margin: 4.44vw 0 0 0;
 
-                        a {
+                        .footer-icon {
                             @include width-height(14.44vw, 14.44vw);
                             margin-right: 5.55vw;
-                        }
-                        a:nth-child(3){ 
-                            margin: 0;
+
+                            img {
+                                @include width-height(5.5vw, 5.5vw)
+                            }
                         }
                     }
                 }

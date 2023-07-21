@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import goldButton from './UI/goldButton.vue';
+import goldButton from '../../UI/goldButton.vue';
     export default {
         components: {
             goldButton
@@ -48,8 +48,8 @@ import goldButton from './UI/goldButton.vue';
 </script>
 
 <style lang="scss">
-    @import '../assets/variables-mixins.scss';
-    @import '../assets/fonts.scss';
+    @import '../../../assets/variables-mixins.scss';
+    @import '../../../assets/fonts.scss';
 
     .overley {
         background-color: rgba(24, 25, 27, .9);
@@ -61,16 +61,19 @@ import goldButton from './UI/goldButton.vue';
         z-index: 2;
         
         .popup-wrapper {
-            @include w-h(842, 328);
+            @include width(842);
+            min-height: 17vw;
             border-radius: 1rem;
             background-color: white;
             color: white;
             position: absolute;
             top: 10rem;
-            left: 27rem;
+            left: 0;
+            right: 0;
             z-index: 3;
             display: flex;
             align-items: start;
+            padding: 2vw 4vw 2vw 2vw;
 
             %gold {
                 font-family: P052;
@@ -85,8 +88,9 @@ import goldButton from './UI/goldButton.vue';
             }
 
             .column {
-                @include w-h(400, 217);
-                @include margin(40, 20, 0, 40);
+                @include width(400);
+                min-height: 11.3vw;
+                @include margin-r(20);
 
                 .popup-title {
                     @extend %gold;
@@ -96,10 +100,11 @@ import goldButton from './UI/goldButton.vue';
                     color: $ver-203;
                     @include font-size(16);
                     font-family: Lato;
-                    @include margin-b(119);
+                    @include margin-b(100);
                 }
                 .popup-info-bottom {
-                    @include w-h(320, 30);
+                    @include width(320);
+                    min-height: 1.5vw;
                     font-family: Roboto;
                     @include font-size(12);
                     color: $ver-203;
@@ -113,15 +118,18 @@ import goldButton from './UI/goldButton.vue';
                 }
             }
             .form-wrapper {
-                @include w-h(302, 228);
-                @include margin-t(40);
+                @include width(302);
+                min-height: 11.8vw;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
 
                 .labels {
                     font-family: Roboto;
                     @include font-size(12px);
                     line-height: 1rem;
                     color: $ver-203;
-                    @include margin-b(40);
+                    @include margin-b(5); 
                 }
                 .inputs {
                     @include w-h(302, 52);
@@ -143,18 +151,56 @@ import goldButton from './UI/goldButton.vue';
                     color: $dark-text;
                 }
                 .inputs:first-of-type::placeholder {
-                        color: $black2;
-                    }
+                    color: $black2;
+                }
+                .gold-btn {
+                    width: fit-content;
+                }
             }
             .close {
                 @include w-h(24, 24);
-                @include margin(14, 9, 0, 40);
-                background-image: url('../images/close.png');
+                position: absolute;
+                top: 5px;
+                right: 5px;
+                background-image: url('../../../images/close.png');
                 background-size: cover;
             }
         }
     }
     
+    @media (min-width: 601px) and (max-width: 960px) {
+        .overley {
+
+            .popup-wrapper {
+                height: fit-content;
+
+                .column {
+                    width: 55%;
+                }
+                .form-wrapper {
+                    width: 45%;
+
+                    .inputs {
+                        height: 3.5vw;
+                    }
+                    .labels {
+                        margin-bottom: 0.5vw;
+                    }
+                }
+                .gold-btn {
+                    margin-top: 1vw;
+                }
+            }
+        }
+    }
+    @media (min-width: 601px) and (max-width: 850px) {
+        .overley {
+            .popup-wrapper {
+                width: 60%;
+            }
+        }
+    }
+
     @media (max-width: 600px) {
         .overley {
 
@@ -162,7 +208,7 @@ import goldButton from './UI/goldButton.vue';
                 @include width-height(95%, 100vw);
                 flex-direction: column;
                 top: 20vw;
-                left: 2.5%;
+                left: 0; right: 0;
                 border-radius: 4.44vw;
 
                 .column {
@@ -191,7 +237,7 @@ import goldButton from './UI/goldButton.vue';
                     .labels {
                         font-size: 3.33vw;
                         width: 100%;
-                        margin-left: 10vw;
+                        margin:0 0 1vw 10vw;
                     }
                     .inputs {
                         @include width-height(83.88vw,12vw);
@@ -202,12 +248,14 @@ import goldButton from './UI/goldButton.vue';
                     .inputs::placeholder {
                         font-size: 3.88vw;
                     }
+                    .gold-btn {
+                        font-size: 20px;
+                    }
                 }
 
                 .close {
-                    position: absolute;
-                    top: 1.5vw;
-                    left: 81vw;
+                    top:10px; 
+                    right: 10px;
                     @include width-height(6vw, 6vw);
                 }
             }

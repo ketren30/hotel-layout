@@ -1,5 +1,5 @@
 <template>
-    <button class="gold-button" @click="onClick" type="button">{{ name }}</button>
+    <button class="gold-btn" @click="onClick" type="button">{{ name }}</button>
 </template>
 
 <script>
@@ -16,25 +16,25 @@ export default {
     @import '../../assets/variables-mixins.scss';
     @import '../../assets/fonts.scss';
 
-    .gold-button {
+    .gold-btn {
         background-color: $gold;
         color: white;
-        height: 3.25rem;
-        padding: 0 1.5rem 0 2rem;
+        padding: 0.8vw 1.6vw;
         font-family: Roboto;
         @include font-size(15);
         border-radius: 0.25rem;
-        margin-right: 10px;
         position: relative;
     }
-
+    @media (min-width: 601px) and (max-width: 960px) {
+        .gold-btn {
+            padding: 1vw 2vw;
+        }
+    }
     @media (max-width: 600px) {
-        .gold-button {
+        .gold-btn {
             font-size: 15px;
             border-radius: 4px;
-            padding: 0 16px;
-            margin-right: 0;
-            height: 10vw;
+            padding: 4.44vw 8.88vw;
         }
     }
 </style>

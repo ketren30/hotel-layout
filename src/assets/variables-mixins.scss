@@ -11,45 +11,45 @@ $radio: #DADADA;
 
 
 @mixin width($w) {
-    width: #{calc($w / 16)}rem;
+    width: #{calc($w /19.2)}vw;
 }
 @mixin width-height($w, $h) {
     width: $w;
     height: $h;
 }
 @mixin w-h($w, $h) {
-    width: #{calc($w / 16)}rem;
-    height: #{calc($h / 16)}rem;
+    width: #{calc($w / 19.2)}vw;
+    height: #{calc($h / 19.2)}vw;
 }
 @mixin margin-t($v) {
-    margin-top: #{calc($v / 16)}rem;
+    margin-top: #{calc($v / 19.2)}vw;
 }
 @mixin margin-b($v) {
-    margin-bottom: #{calc($v / 16)}rem;
+    margin-bottom: #{calc($v / 19.2)}vw;
 }
 @mixin margin-r($v) {
-    margin-right: #{calc($v / 16)}rem;
+    margin-right: #{calc($v / 19.2)}vw;
 }
 @mixin margin-l($v) {
-    margin-left: #{calc($v / 16)}rem;
+    margin-left: #{calc($v / 19.2)}vw;
 }
 @mixin margin($t, $r, $b, $l) {
-    margin: #{calc($t / 16)}rem #{calc($r / 16)}rem #{calc($b / 16)}rem #{calc($l / 16)}rem;
+    margin: #{calc($t / 19.2)}vw #{calc($r / 19.2)}vw #{calc($b / 19.2)}vw #{calc($l / 19.2)}vw;
 }
 @mixin margin-c($up, $side) {
-    margin: #{calc($up / 16)}rem #{calc($side / 16)}rem
+    margin: #{calc($up / 19.2)}vw #{calc($side / 19.2)}vw
 }
 @mixin margin-all($v) {
-    margin: #{calc($v / 16)}rem
+    margin: #{calc($v / 19.2)}vw
 }
 @mixin font-size($px) {
     font-size: #{calc($px / 16)}rem;
 }
 @mixin margin-x($left, $rigth) {
-    margin: 0 #{calc($right / 16)}rem 0 #{calc($left / 16)}rem
+    margin: 0 #{calc($right / 19.2)}vw 0 #{calc($left / 19.2)}vw
 }
 @mixin margin-y($top, $bottom) {
-    margin: #{calc($top / 16)}rem 0 #{calc($bottom / 16)}rem 0
+    margin: #{calc($top / 19.2)}vw 0 #{calc($bottom / 19.2)}vw 0
 }
 @mixin height($v) {
     height: #{calc($v / 3.6)}vw;
@@ -58,6 +58,17 @@ $radio: #DADADA;
     display: flex;
     justify-content: space-between;
 }
+@mixin tablet-w-h($w, $h) {
+    width: #{calc($w / 9.6)}vw;
+    height: #{calc($h / 9.6)}vw;
+}
+@mixin tablet-w($w) {
+    width: #{calc($w / 9.6)}vw;
+}
+@mixin tablet-h($h) {
+    height: #{calc($h / 9.6)}vw;
+}
+
 
 @mixin next-template() {
     width: 40.8%;

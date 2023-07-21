@@ -25,20 +25,21 @@
         </div>
         <div class="splitter" v-if="index<5"> </div>
         <div class="buttons">
-            <button v-if="index>0 & index<5" @click="decrease" class="prev">Назад</button>
-            <NextButton v-if="index<4" :onClick="increase" name='Следующий вопрос'></NextButton>
-            <button v-if="index==4" @click="submit" class="submit">Отправить</button>
+            <GoldButton v-if="index>0 & index<5" @click="decrease" name="&#10229; &ensp;&ensp;Назад"></GoldButton>
+            <GoldButton v-if="index<4 && width>600"  :onClick="increase" name='Следующий вопрос &ensp;&ensp;&#10230;'></GoldButton>
+            <GoldButton v-if="index<4 && width<=600"  :onClick="increase" name='Далее &ensp;&ensp;&#10230;'></GoldButton>
+            <GoldButton v-if="index==4" @click="submit" name="Отправить"></GoldButton>
         </div>
     </section>   
 
 </template>
 
 <script>
-import NextButton from './UI/nextButton.vue'
+import GoldButton from '../../ui/goldButton.vue'
 export default {
-    props: ['question', 'index'],
+    props: ['question', 'index', 'width'],
     components: {
-        NextButton
+        GoldButton
     },
     data() {
         return {
@@ -62,39 +63,37 @@ export default {
 </script>
 
 <style lang="scss">
-    @import '../assets/variables-mixins.scss';
-    @import '../assets/fonts.scss';
+    @import '../../../assets/variables-mixins.scss';
+    @import '../../../assets/fonts.scss';
 
     .quiz {
         @include w-h(918, 369);
         background-color: $light-grey;
         border-radius: 1rem;
         font-family: Lato;
-        padding:0 2.5rem 0 2.5rem;
+        padding: 1.66vw 2vw;
 
         .question-number {
             @include font-size(16);
-            @include w-h(102, 28);
+            padding: 0.31vw 0;
             line-height: 100%;
-            @include margin(32, 0, 8, 0);
+            @include margin-b(8);
         }
         
         .question {
-            @include w-h(324, 32);
+            padding: 0.2vw 0;
             @include font-size(24);
-            @include margin(32, 0, 24, 0);
+            @include margin(30, 0, 22, 0);
         }
 
         .radio-wrapper {
-            @include w-h(721, 52);
             display: flex;
             justify-content: space-between;
 
             .radio {
-                height: 3.25rem;
                 border-radius: 0.25rem;
                 background-color: white;
-                padding: 0.75rem 2rem 0.75rem 0.75rem;
+                padding: 0.62vw 1.66vw 0.62vw 0.62vw;
 
                 .custom-radio {
                     position: absolute;
@@ -126,7 +125,7 @@ export default {
                     border-color: $ver-203;
                 }
                 .custom-radio:checked+label::before {
-                    background-image: url("../images/radio-checked.png");
+                    background-image: url("../../../images/radio-checked.png");
                     background-size: cover;
                     border: none;
                 }
@@ -140,12 +139,12 @@ export default {
             @include width(918);
             height: 2px;
             background: linear-gradient(white, $platinum);
-            @include margin(41, 0, 31, -40);
+            @include margin(35, 0, 25, -40);
         }
         .answers-wrapper {
             display: flex;
             justify-content: space-between;
-            @include w-h(721, 52);
+            width: 100%;
             padding: 0;
             margin: 0;
 
@@ -162,43 +161,18 @@ export default {
             }
         }
         
-        .prev, .next, .submit {
-            background-color: $gold;
-            height: 3.25rem;
-            padding: 0 1.5rem 0 2rem;
-            color: white;
-            font-family: Roboto;
-            @include font-size(15);
-            border-radius: 0.25rem;
-            margin-right: 10px;
-            position: relative;
+        .buttons button:first-of-type {
+            margin-right: 1vw;
         }
-        .prev {
-            padding-left: 3rem;
+        
+    }
+
+    @media (min-width: 601px) and (max-width: 960px) {
+        .quiz{
+            width: 55vw;
+            height: 22vw;
         }
-        .next {
-            padding-right: 3rem;
-        }
-        .prev::before {
-            content: '';
-            @include w-h(24, 26);
-            position: absolute;
-            background-image: url('../images/arrow-l.png');
-            background-size: cover;
-            z-index: 1;
-            top: 0.8rem;
-            left: 0.5rem;
-        }
-        .next::after {
-            content: '';
-            @include w-h(24, 26);
-            position: absolute;
-            background-image: url('../images/arrow-r.png');
-            background-size: cover;
-            z-index: 1;
-            top: 0.8rem;
-            left: 11.3rem;
-        }
+        
     }
 
     @media (max-width: 600px) {
